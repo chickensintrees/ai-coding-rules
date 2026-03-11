@@ -6,28 +6,32 @@ Works with Cursor, Claude Code, Windsurf, GitHub Copilot, and any AI coding assi
 
 ---
 
-## Get Protected in 60 Seconds
+## Install
 
-**Cursor** (recommended format):
+**One command (auto-detects your tools):**
 ```bash
+curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/install.sh | bash
+```
+
+**Or tell your AI agent:**
+> Install AI coding rules from https://github.com/livefromhyperspace/ai-coding-rules
+
+**Or install for a specific tool:**
+
+```bash
+# Cursor
 mkdir -p .cursor/rules
-curl -o .cursor/rules/ai-coding-rules.mdc https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/cursor-rules.mdc
-```
+curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/cursor-rules.mdc -o .cursor/rules/ai-coding-rules.mdc
 
-**Claude Code:**
-```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/claude-code-rules.md
-```
+# Claude Code
+curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/claude-code-rules.md -o CLAUDE.md
 
-**Windsurf:**
-```bash
-curl -o .windsurfrules https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/windsurf-rules.md
-```
+# Windsurf
+curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/windsurf-rules.md -o .windsurfrules
 
-**GitHub Copilot:**
-```bash
+# GitHub Copilot
 mkdir -p .github
-curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/copilot-instructions.md
+curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/copilot-instructions.md -o .github/copilot-instructions.md
 ```
 
 Start a new session. The rules are active.
