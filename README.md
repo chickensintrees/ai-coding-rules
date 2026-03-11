@@ -10,28 +10,28 @@ Works with Cursor, Claude Code, Windsurf, GitHub Copilot, and any AI coding assi
 
 **One command (auto-detects your tools):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/install.sh | bash
 ```
 
 **Or tell your AI agent:**
-> Install AI coding rules from https://github.com/livefromhyperspace/ai-coding-rules
+> Install AI coding rules from https://github.com/chickensintrees/ai-coding-rules
 
 **Or install for a specific tool:**
 
 ```bash
 # Cursor
 mkdir -p .cursor/rules
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/cursor-rules.mdc -o .cursor/rules/ai-coding-rules.mdc
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/cursor-rules.mdc -o .cursor/rules/ai-coding-rules.mdc
 
 # Claude Code
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/claude-code-rules.md -o CLAUDE.md
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/claude-code-rules.md -o CLAUDE.md
 
 # Windsurf
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/windsurf-rules.md -o .windsurfrules
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/windsurf-rules.md -o .windsurfrules
 
 # GitHub Copilot
 mkdir -p .github
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/copilot-instructions.md -o .github/copilot-instructions.md
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/copilot-instructions.md -o .github/copilot-instructions.md
 ```
 
 Start a new session. The rules are active.
@@ -164,7 +164,7 @@ ai-coding-rules/
 
 ## Contributing
 
-If you've been burned by an AI coding agent and the rule that would have saved you isn't here, [open an issue](https://github.com/livefromhyperspace/ai-coding-rules/issues).
+If you've been burned by an AI coding agent and the rule that would have saved you isn't here, [open an issue](https://github.com/chickensintrees/ai-coding-rules/issues).
 
 Rules must be:
 - **Derived from a real failure.** Not theoretical. What happened?

@@ -7,7 +7,7 @@
 
 set -e
 
-REPO_BASE="https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main"
+REPO_BASE="https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main"
 
 echo "AI Coding Rules — Installing..."
 echo ""
@@ -65,4 +65,4 @@ fi
 
 echo ""
 echo "Done. Start a new AI session to activate the rules."
-echo "Full docs: https://github.com/livefromhyperspace/ai-coding-rules"
+echo "Full docs: https://github.com/chickensintrees/ai-coding-rules"

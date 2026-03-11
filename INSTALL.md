@@ -3,7 +3,7 @@
 ## Option 1: One-liner (terminal)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/install.sh | bash
 ```
 
 Auto-detects your tools (Cursor, Claude Code, Windsurf, Copilot) and installs the right file.
@@ -12,7 +12,7 @@ Auto-detects your tools (Cursor, Claude Code, Windsurf, Copilot) and installs th
 
 Paste this into Cursor, Claude Code, or any AI coding tool:
 
-> Install AI coding rules from https://github.com/livefromhyperspace/ai-coding-rules — read the README, download the correct rules file for this tool, and install it into this project.
+> Install AI coding rules from https://github.com/chickensintrees/ai-coding-rules — read the README, download the correct rules file for this tool, and install it into this project.
 
 The agent will read the repo, identify the right file for your tool, and copy it into place.
 
