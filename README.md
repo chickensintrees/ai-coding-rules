@@ -1,0 +1,178 @@
+# AI Coding Rules
+
+**12 rules that prevent AI coding disasters. Derived from 500+ hours of real production work.**
+
+Works with Cursor, Claude Code, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files.
+
+---
+
+## Get Protected in 60 Seconds
+
+**Cursor** (recommended format):
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/ai-coding-rules.mdc https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/cursor-rules.mdc
+```
+
+**Claude Code:**
+```bash
+curl -o CLAUDE.md https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/claude-code-rules.md
+```
+
+**Windsurf:**
+```bash
+curl -o .windsurfrules https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/windsurf-rules.md
+```
+
+**GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/livefromhyperspace/ai-coding-rules/main/quickstart/copilot-instructions.md
+```
+
+Start a new session. The rules are active.
+
+---
+
+## What This Prevents
+
+These are real scenarios, not hypotheticals:
+
+- **An AI agent rewrote a file and deleted half the content.** No version control. No way back. Hours of work gone.
+- **An agent said "saved" but the file didn't actually change.** The next three steps built on an edit that never happened.
+- **An agent "cleaned up" the code and stripped every comment.** The comments explained why non-obvious decisions were made. Now nobody knows.
+- **An agent over-engineered a simple request** into a component library with state management, abstractions, and patterns the user couldn't understand or maintain.
+- **An agent entered a fix-break-fix loop** where each "fix" introduced a new problem in a different place. Twelve attempts. The code was worse than when it started.
+- **An agent built from outdated information** after the user gave corrections. The corrections went into a note, not the actual file. The build used the old version.
+
+Every rule exists because one of these happened. Some of them happened more than once.
+
+---
+
+## The 12 Rules
+
+### Tier 1 -- Survival (prevents data loss)
+
+| # | Rule | What it does |
+|---|------|-------------|
+| 1 | **Checkpoint** | Commit at every milestone. You can always go back. |
+| 2 | **Don't Delete Without Asking** | Never remove code or comments without confirmation. |
+| 3 | **Read Before Write** | Read the file before editing it. Every time. |
+
+### Tier 2 -- Integrity (prevents wasted work)
+
+| # | Rule | What it does |
+|---|------|-------------|
+| 4 | **Save Means Verify** | After editing, confirm the change is actually in the file. |
+| 5 | **Spec First** | Read requirements and state your plan before building. |
+| 6 | **Search Before Creating** | Look for existing code before writing new code. |
+| 7 | **One Change at a Time** | Don't bundle unrelated changes in one edit. |
+
+### Tier 3 -- Quality (prevents frustration)
+
+| # | Rule | What it does |
+|---|------|-------------|
+| 8 | **Don't Over-Engineer** | Build what was asked for. Nothing more. |
+| 9 | **Verify Before Presenting** | Check your own work before showing it. |
+| 10 | **Two Strikes** | Two failed attempts = stop and try a different approach. |
+| 11 | **Ask, Don't Assume** | When it's ambiguous, ask. Don't guess. |
+| 12 | **Don't Trust "Done"** | Verify each step of multi-step tasks. |
+
+Read the full rule descriptions with examples: **[RULES.md](RULES.md)**
+
+---
+
+## Choose Your Level
+
+**Just started with AI coding?** Start with Tier 1 (rules 1-3). Copy one file. That's enough to prevent the worst disasters.
+
+**Been burned already?** Use all 12 rules. They're all in the quickstart file.
+
+**Running a team?** Version-control the rule file in your repo so everyone shares the same rules. See `presets/team.md` for team-specific additions.
+
+---
+
+## How It Works
+
+AI coding tools read instruction files at the start of every conversation. The instructions shape how the AI behaves: what it checks before editing, how it handles ambiguity, when it stops and asks.
+
+| Tool | File location | Format |
+|------|--------------|--------|
+| Cursor (new) | `.cursor/rules/*.mdc` | Markdown + YAML frontmatter |
+| Cursor (legacy) | `.cursorrules` | Plain text |
+| Claude Code | `CLAUDE.md` | Markdown |
+| Windsurf | `.windsurfrules` | Markdown |
+| GitHub Copilot | `.github/copilot-instructions.md` | Markdown |
+
+The rules are the same across all formats. Only the file location and metadata differ.
+
+For Cursor specifically: the `.mdc` format includes `alwaysApply: true` in the frontmatter, which means the rules are active in every session. Without this flag, rules may silently not apply.
+
+---
+
+## FAQ
+
+**Do these slow down the AI?**
+No. The verification steps add a few seconds per edit. The rework they prevent saves hours.
+
+**Can I customize these?**
+Yes. Start with the defaults. After a week of use, add project-specific rules for your stack, your conventions, your team's patterns.
+
+**Do I need all 12?**
+No. Start with Tier 1 (rules 1-3). Add more when you're ready. Even one rule -- Checkpoint -- prevents the worst outcome.
+
+**What if the AI ignores a rule?**
+It happens, especially with complex requests. That's why Checkpoint is rule 1. If the agent makes a mess, you can always revert to the last commit.
+
+**Why not just use git?**
+Git is the safety net. The rules prevent the falls. Without the rules, you'll spend your time reverting. With them, you'll rarely need to.
+
+**Where did these come from?**
+500+ hours of production work with AI coding tools across real projects. Every rule has a specific failure behind it. See `examples/disasters.md` for the stories.
+
+---
+
+## Project Structure
+
+```
+ai-coding-rules/
+  README.md                 You are here
+  RULES.md                  All 12 rules with full descriptions
+  LICENSE                   MIT
+
+  quickstart/               Copy one file and go
+    QUICKSTART.md           Setup instructions per tool
+    cursor-rules.mdc        Cursor (new format)
+    cursorrules.txt          Cursor (legacy format)
+    claude-code-rules.md    Claude Code
+    windsurf-rules.md       Windsurf
+    copilot-instructions.md GitHub Copilot
+
+  presets/                  Curated subsets
+    beginner.md             Rules 1-5 only
+    team.md                 All 12 + collaboration rules
+
+  examples/
+    disasters.md            Real failure stories
+```
+
+---
+
+## Contributing
+
+If you've been burned by an AI coding agent and the rule that would have saved you isn't here, [open an issue](https://github.com/livefromhyperspace/ai-coding-rules/issues).
+
+Rules must be:
+- **Derived from a real failure.** Not theoretical. What happened?
+- **Actionable.** The AI agent can follow it without human intervention.
+- **Universal.** Works across tools, languages, and frameworks.
+
+---
+
+## License
+
+MIT. Use these rules in any project, commercial or otherwise.
+
+---
+
+*Built by [Bill Moore](https://livefromhyper.space) and [STEF](https://livefromhyper.space). These rules were learned the hard way so you don't have to.*
