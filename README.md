@@ -104,6 +104,8 @@ Read the full rule descriptions with examples: **[RULES.md](RULES.md)**
 
 **Running a team?** Version-control the rule file in your repo so everyone shares the same rules. See `presets/team.md` for team-specific additions.
 
+**Want self-improving systems?** Add the autoresearch preset: rules for defining metrics, measuring baselines, running experiments, and shipping based on evidence. See `presets/autoresearch.md`.
+
 ---
 
 ## How It Works
@@ -172,6 +174,7 @@ ai-coding-rules/
   presets/                  Curated subsets
     beginner.md             Rules 1-5 only
     team.md                 All 12 + collaboration rules
+    autoresearch.md         Rules 13-19: self-improving systems
 
   examples/
     disasters.md            Real failure stories
