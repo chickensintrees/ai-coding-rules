@@ -4,7 +4,7 @@
 
 Works with Cursor, Claude Code, Replit, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files.
 
-**The core idea: spec-driven development.** AI agents default to building. These rules make them plan first. The spec is the single source of truth. Changes flow through the spec before they flow into code. See the [full guide](guides/spec-driven.md).
+**AI agents default to building.** These rules make them stop, think, and verify. Commit before changing. Read before writing. Verify before claiming "done." And at the center: the spec is the single source of truth -- changes flow through the spec before they flow into code. The spec-driven approach is the philosophy. The other eleven rules are the scaffolding that makes it work. See the [full guide](guides/spec-driven.md).
 
 ---
 
