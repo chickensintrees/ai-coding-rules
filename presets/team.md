@@ -20,9 +20,9 @@ Copy this into your project's AI instruction file and commit it to the repo so e
 
 **4. Save Means Verify** — After editing a file, verify the change by reading the file back. Do not say "done" until confirmed.
 
-**5. Spec First** — Read all available requirements before building. State your plan before executing. Update source documents before rebuilding.
+**5. Spec First** — The spec is the single source of truth. Read it before implementing. When a change is requested, update the spec first, then update the code to match. When spec and code disagree, the spec wins.
 
-**6. Search Before Creating** — Search the codebase for existing implementations before writing new code. Extend existing code rather than duplicating.
+**6. Search Before Creating** — Search the codebase for existing implementations before writing new code. Extend, fork, or replace -- if changing shared code could break other things, fork it.
 
 **7. One Change at a Time** — Make one logical change per step. Don't bundle unrelated modifications.
 

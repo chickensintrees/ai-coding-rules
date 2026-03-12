@@ -35,6 +35,12 @@ Copy the contents of `windsurf-rules.md` into a file called `.windsurfrules` at 
 
 ---
 
+## Replit
+
+Copy the contents of `replit-rules.md` into the `replit.md` file at the root of your project. If you have an existing `replit.md`, append the rules to it.
+
+---
+
 ## GitHub Copilot
 
 Copy the contents of `copilot-instructions.md` into `.github/copilot-instructions.md` in your project.
@@ -47,8 +53,24 @@ Go to Cursor Settings > General > Rules for AI. Paste the contents of `cursor-ru
 
 ---
 
+## Global Rules (all projects)
+
+To apply these rules to every project you open, install them globally:
+
+| Tool | Global location |
+|------|----------------|
+| Cursor | `~/.cursor/rules/ai-coding-rules.mdc` |
+| Claude Code | Append to `~/.claude/CLAUDE.md` |
+| Replit | No global option -- install per project |
+| Windsurf | Paste into Settings > Rules for AI |
+| Copilot | No global option -- install per project |
+
+Or run: `curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/install.sh | bash -s -- --global`
+
+---
+
 ## What did I just install?
 
 12 rules that prevent the most common AI coding disasters: deleted work, phantom saves, over-engineering, fix-break loops. Read [RULES.md](../RULES.md) for the full list with explanations.
 
-**The short version:** Your AI assistant will now read before it writes, commit before it changes, verify before it claims "done," and ask before it deletes. That's the floor. Everything above that is quality of life.
+**The short version:** Your AI assistant will now read before it writes, commit before it changes, verify before it claims "done," and ask before it deletes. The spec is the source of truth -- the agent updates the spec before it updates the code. That's the floor. Everything above that is quality of life.

@@ -56,11 +56,25 @@ After editing a file, verify the edit by reading the file back or searching for 
 
 ### 5. Spec First
 
-Read the requirements before writing code. State your plan before executing.
+The spec is the single source of truth. All changes flow through the spec before they flow into code.
 
-Before building anything, read all available requirements: spec files, issue descriptions, existing documentation, and the user's full request. Then state your plan: what you're going to build, what files you'll create or modify, and what approach you'll take. Wait for confirmation before proceeding. If there's no spec, ask clarifying questions rather than guessing. When the user gives a correction, update the source document first, then rebuild from the corrected source. Never build from stale information.
+This project should have a spec file (e.g., `SPEC.md`, `docs/spec.md`, or equivalent). If one exists, read it before doing any work. If one doesn't exist and the project is non-trivial, create one before writing code.
 
-**What it prevents:** The agent builds something that doesn't match the request, requiring a complete rewrite.
+**The workflow:**
+
+1. **New work:** Understand the request. Update the spec to reflect the new requirement. Then implement code that matches the spec.
+2. **Changes:** When the user asks for a change, update the spec first, then update the code to match.
+3. **Corrections:** When the user says "that's wrong, it should do X instead," the spec changes first. The code follows. Never update code without updating the spec.
+
+The spec is not documentation written after the fact. It is the plan that the code implements. When the spec and the code disagree, the spec wins. Fix the code.
+
+If there's no spec and the request is a quick one-off change, you don't need to create a formal spec document. But for any feature, workflow, or system with multiple parts, write the spec first. Answer "what are we building, how should it behave, and what does done look like?" in a document before answering it in code.
+
+Don't confuse reading a spec with maintaining one. Reading existing docs is the minimum. The real value is keeping the spec current as a living document that evolves with the project. When the user asks you to change the app, they're asking you to change the spec and then change the app.
+
+See `guides/spec-driven.md` for the full methodology: what goes in a spec, how to start one, and platform-specific setup.
+
+**What it prevents:** The agent builds from conversation context instead of a durable document. Corrections are acknowledged but never applied to the source. The spec and the code drift apart until neither is trustworthy.
 
 ---
 
@@ -68,9 +82,9 @@ Before building anything, read all available requirements: spec files, issue des
 
 Look for existing implementations before writing new code.
 
-Before creating a new file, function, or component, search the codebase for existing implementations. Look for similar file names, function names, and patterns. If something similar exists, extend or modify it rather than creating a duplicate. If you determine a new implementation is genuinely needed, explain why the existing one doesn't work.
+Before creating a new file, function, or component, search the codebase for existing implementations. Look for similar file names, function names, and patterns. If something similar exists, you have three options: extend it, fork it (copy and modify independently), or replace it. Choose based on risk -- if changing shared code could break other things, fork it. If the existing code is only used in one place, extend it. If a new implementation is genuinely needed, explain why the existing one doesn't work.
 
-**What it prevents:** Duplicate implementations that conflict with existing code, or missed utility functions that already do the job.
+**What it prevents:** Duplicate implementations that conflict with existing code, missed utility functions that already do the job, or modifications to shared code that break unrelated features.
 
 ---
 

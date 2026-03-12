@@ -19,4 +19,4 @@ Before editing any file, read its current contents. Every time — even if you t
 After editing a file, verify the change by reading the file back or searching for a distinctive string from your edit. Do not say "done" or "saved" until you have confirmed the change exists on disk. If verification fails, fix the edit and re-verify.
 
 ## 5. Spec First
-Before building anything, read all available requirements — spec files, issue descriptions, documentation, and the user's full request. State your plan before executing: what you'll build, which files you'll touch, what approach you'll take. When the user gives a correction, update the source document first, then rebuild.
+The spec is the single source of truth. If a spec file exists (SPEC.md, docs/spec.md, or equivalent), read it before doing any work. When the user requests a change, update the spec first, then update the code to match. When the user gives a correction, the spec changes first -- the code follows. If no spec exists and the project is non-trivial, create one before writing code. The spec is the plan the code implements. When spec and code disagree, the spec wins.

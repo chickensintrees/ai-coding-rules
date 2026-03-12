@@ -1,6 +1,6 @@
 # AI Coding Rules
 
-## TIER 1 — SURVIVAL
+## TIER 1 -- SURVIVAL
 
 ### 1. Checkpoint
 Before making significant changes, commit the current working state with git. After completing any unit of work you'd be upset to lose, commit again. If git is not initialized in this project, initialize it before writing any code.
@@ -9,9 +9,9 @@ Before making significant changes, commit the current working state with git. Af
 Never remove code, files, or comments without explicit user confirmation. When refactoring, preserve all existing functionality and comments. If you believe something should be removed, explain what and why, then wait for approval. Never strip comments during refactoring.
 
 ### 3. Read Before Write
-Before editing any file, read its current contents. Every time — even if you think you know what's in it. Before creating a new file, search for existing files with similar names or purposes to avoid duplicating or overwriting existing work.
+Before editing any file, read its current contents. Every time -- even if you think you know what's in it. Before creating a new file, search for existing files with similar names or purposes to avoid duplicating or overwriting existing work.
 
-## TIER 2 — INTEGRITY
+## TIER 2 -- INTEGRITY
 
 ### 4. Save Means Verify
 After editing a file, verify the change by reading the file back or searching for a distinctive string from your edit. Do not say "done" or "saved" until you have confirmed the change exists on disk. If verification fails, fix the edit and re-verify.
@@ -23,9 +23,9 @@ The spec is the single source of truth. If a spec file exists (SPEC.md, docs/spe
 Before creating a new file, function, or component, search the codebase for existing implementations. If something similar exists, decide whether to extend it, fork it (copy and modify independently), or replace it. If changing shared code could break other things, fork it. If a new implementation is genuinely needed, explain why.
 
 ### 7. One Change at a Time
-Each edit should do one thing. If multiple changes are needed, make them sequentially — one change, verify, then the next. Don't refactor while fixing bugs. Don't "improve" code you weren't asked to touch.
+Each edit should do one thing. If multiple changes are needed, make them sequentially -- one change, verify, then the next. Don't refactor while fixing bugs. Don't "improve" code you weren't asked to touch.
 
-## TIER 3 — QUALITY
+## TIER 3 -- QUALITY
 
 ### 8. Don't Over-Engineer
 Build the simplest thing that satisfies the request. Do not add abstractions, extra features, or "nice to haves" unless asked. Match the complexity of the solution to the complexity of the request.

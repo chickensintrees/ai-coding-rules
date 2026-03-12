@@ -2,7 +2,9 @@
 
 **12 rules that prevent AI coding disasters. Derived from 500+ hours of real production work.**
 
-Works with Cursor, Claude Code, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files.
+Works with Cursor, Claude Code, Replit, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files.
+
+**The core idea: spec-driven development.** AI agents default to building. These rules make them plan first. The spec is the single source of truth. Changes flow through the spec before they flow into code. See the [full guide](guides/spec-driven.md).
 
 ---
 
@@ -14,7 +16,7 @@ curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/mai
 ```
 
 **Or tell your AI agent:**
-> Install AI coding rules from https://github.com/chickensintrees/ai-coding-rules
+> Install AI coding rules from https://github.com/chickensintrees/ai-coding-rules and add them to my global rules so they apply to all my projects
 
 **Or install for a specific tool:**
 
@@ -26,12 +28,20 @@ curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/mai
 # Claude Code
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/claude-code-rules.md -o CLAUDE.md
 
+# Replit
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/replit-rules.md -o replit.md
+
 # Windsurf
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/windsurf-rules.md -o .windsurfrules
 
 # GitHub Copilot
 mkdir -p .github
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/copilot-instructions.md -o .github/copilot-instructions.md
+```
+
+**For global install** (applies to all your projects):
+```bash
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/install.sh | bash -s -- --global
 ```
 
 Start a new session. The rules are active.
@@ -68,7 +78,7 @@ Every rule exists because one of these happened. Some of them happened more than
 | # | Rule | What it does |
 |---|------|-------------|
 | 4 | **Save Means Verify** | After editing, confirm the change is actually in the file. |
-| 5 | **Spec First** | Read requirements and state your plan before building. |
+| 5 | **Spec First** | The spec is the source of truth. Update it before changing code. |
 | 6 | **Search Before Creating** | Look for existing code before writing new code. |
 | 7 | **One Change at a Time** | Don't bundle unrelated changes in one edit. |
 
@@ -100,13 +110,16 @@ Read the full rule descriptions with examples: **[RULES.md](RULES.md)**
 
 AI coding tools read instruction files at the start of every conversation. The instructions shape how the AI behaves: what it checks before editing, how it handles ambiguity, when it stops and asks.
 
-| Tool | File location | Format |
-|------|--------------|--------|
-| Cursor (new) | `.cursor/rules/*.mdc` | Markdown + YAML frontmatter |
-| Cursor (legacy) | `.cursorrules` | Plain text |
-| Claude Code | `CLAUDE.md` | Markdown |
-| Windsurf | `.windsurfrules` | Markdown |
-| GitHub Copilot | `.github/copilot-instructions.md` | Markdown |
+| Tool | Project file | Global file |
+|------|-------------|-------------|
+| Cursor (new) | `.cursor/rules/*.mdc` | `~/.cursor/rules/*.mdc` |
+| Cursor (legacy) | `.cursorrules` | Settings > Rules for AI |
+| Claude Code | `CLAUDE.md` | `~/.claude/CLAUDE.md` |
+| Replit | `replit.md` | -- |
+| Windsurf | `.windsurfrules` | Settings > Rules for AI |
+| GitHub Copilot | `.github/copilot-instructions.md` | -- |
+
+**Project rules** apply to one project. **Global rules** apply to every project you open with that tool. Install globally so the rules follow you everywhere. Install per-project to version-control them with your team.
 
 The rules are the same across all formats. Only the file location and metadata differ.
 
@@ -144,11 +157,15 @@ ai-coding-rules/
   RULES.md                  All 12 rules with full descriptions
   LICENSE                   MIT
 
+  guides/
+    spec-driven.md          Spec-driven development methodology
+
   quickstart/               Copy one file and go
     QUICKSTART.md           Setup instructions per tool
     cursor-rules.mdc        Cursor (new format)
-    cursorrules.txt          Cursor (legacy format)
+    cursorrules.txt         Cursor (legacy format)
     claude-code-rules.md    Claude Code
+    replit-rules.md         Replit
     windsurf-rules.md       Windsurf
     copilot-instructions.md GitHub Copilot
 

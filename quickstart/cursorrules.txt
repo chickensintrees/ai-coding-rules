@@ -28,17 +28,20 @@ you have confirmed the change exists on disk. If verification fails, fix the
 edit and re-verify.
 
 ### 5. Spec First
-Before building anything, read all available requirements — spec files, issue
-descriptions, documentation, and the user's full request. State your plan
-before executing: what you'll build, which files you'll touch, what approach
-you'll take. When the user gives a correction, update the source document
-first, then rebuild.
+The spec is the single source of truth. If a spec file exists (SPEC.md,
+docs/spec.md, or equivalent), read it before doing any work. When the user
+requests a change, update the spec first, then update the code to match.
+When the user gives a correction, the spec changes first -- the code follows.
+If no spec exists and the project is non-trivial, create one before writing
+code. Never build from conversation alone when a spec file exists. The spec
+is the plan the code implements. When spec and code disagree, the spec wins.
 
 ### 6. Search Before Creating
 Before creating a new file, function, or component, search the codebase for
-existing implementations. If something similar exists, extend or modify it.
-If a new implementation is genuinely needed, explain why the existing one
-doesn't work.
+existing implementations. If something similar exists, decide whether to
+extend it, fork it (copy and modify independently), or replace it. If
+changing shared code could break other things, fork it. If a new
+implementation is genuinely needed, explain why.
 
 ### 7. One Change at a Time
 Each edit should do one thing. If multiple changes are needed, make them
