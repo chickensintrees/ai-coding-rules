@@ -161,6 +161,7 @@ ai-coding-rules/
 
   guides/
     spec-driven.md          Spec-driven development methodology
+    goal-loops.md           Running agents in a loop until the work is done (/goal, ceilings, scheduled PRs)
 
   quickstart/               Copy one file and go
     QUICKSTART.md           Setup instructions per tool
