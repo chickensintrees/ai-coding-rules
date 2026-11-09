@@ -187,8 +187,8 @@ Its harness:
 | Claude Code entry point | `CLAUDE.md` containing `@AGENTS.md` |
 | Replit entry point | `replit.md` |
 | Source of truth | A root `SPEC.md` for the suite, plus a `SPEC.md` per tool |
-| Skills | Identical copies in `.agents/skills/` and `.claude/skills/` -- for example: start a contribution, add a record, propose a feature, verify and open a PR |
-| Safeguards | Registry-integrity and data-integrity tests that check every student PR, and one check command as the definition of done |
+| Skills | Identical copies in `.agents/skills/` and `.claude/skills/`: `connect-github`, `start-contribution`, `add-industry`, `add-tool`, `propose-feature`, `verify-and-open-pr`, `respond-to-review` |
+| Safeguards | Registry-integrity and data-integrity tests that check every student PR, and `npm run check` (lint, typecheck, tests, build) as the definition of done |
 | Referee | CI on every pull request |
 | Integration point | A pull request template that asks what changed and how it was verified |
 
