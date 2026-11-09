@@ -12,11 +12,11 @@ curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/mai
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/install.sh | bash -s -- --global
 ```
 
-Auto-detects your tools (Cursor, Claude Code, Replit, Windsurf, Copilot) and installs the right file.
+Auto-detects your tools (Cursor, Claude Code, Codex, Replit, Windsurf, Copilot) and installs the right file.
 
 ## Option 2: Tell your AI agent
 
-Paste this into Cursor, Claude Code, Replit, or any AI coding tool:
+Paste this into Cursor, Claude Code, Codex, Replit, or any AI coding tool:
 
 > Install AI coding rules from https://github.com/chickensintrees/ai-coding-rules -- read the README, download the correct rules file for this tool, and install it into this project. Then help me add these rules to my global rules file so they apply to all my projects.
 
@@ -30,9 +30,18 @@ Tell your agent to install the rules to these locations for global coverage:
 |------|----------------|
 | Cursor | `~/.cursor/rules/ai-coding-rules.mdc` |
 | Claude Code | `~/.claude/CLAUDE.md` (append) |
+| Codex | `~/.codex/AGENTS.md` (append; `$CODEX_HOME/AGENTS.md` if you set `CODEX_HOME`) |
 | Replit | No global option -- install per project via `replit.md` |
 | Windsurf | Settings > Rules for AI (paste rules into the settings UI) |
 | Copilot | No global option -- install per project |
+
+## Testing the installer locally
+
+Set `AI_CODING_RULES_BASE` to download from a local checkout instead of GitHub:
+
+```bash
+AI_CODING_RULES_BASE=file://$PWD bash install.sh
+```
 
 ## Option 3: Manual
 
@@ -48,7 +57,7 @@ See [quickstart/QUICKSTART.md](quickstart/QUICKSTART.md) for copy-paste instruct
 
 ## Updating
 
-Re-run the install command. It will overwrite the existing rules file with the latest version. For Claude Code, it appends to your existing CLAUDE.md rather than overwriting (and skips if already installed).
+Re-run the install command. It will overwrite the existing rules file with the latest version. For Claude Code, Codex (`AGENTS.md`) and Replit, it appends to your existing file rather than overwriting (and skips if already installed). To get the latest version of an appended section, remove it and re-run.
 
 ## Uninstalling
 
@@ -58,6 +67,7 @@ Delete the rules file:
 |------|-------------|-------------|
 | Cursor | `.cursor/rules/ai-coding-rules.mdc` | `~/.cursor/rules/ai-coding-rules.mdc` |
 | Claude Code | Remove "AI Coding Rules" section from `CLAUDE.md` | Remove from `~/.claude/CLAUDE.md` |
+| Codex | Remove "AI Coding Rules" section from `AGENTS.md` | Remove from `~/.codex/AGENTS.md` |
 | Replit | Remove "AI Coding Rules" section from `replit.md` | -- |
 | Windsurf | `.windsurfrules` | Remove from Settings |
 | Copilot | `.github/copilot-instructions.md` | -- |
