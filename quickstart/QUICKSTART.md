@@ -29,6 +29,16 @@ Copy the contents of `claude-code-rules.md` into the `CLAUDE.md` file at the roo
 
 ---
 
+## Codex (and other tools that read AGENTS.md)
+
+Copy the contents of `AGENTS.md` into the `AGENTS.md` file at the root of your project. If you have one, append the rules to it.
+
+Codex reads `AGENTS.md` from the repo root down to your working directory. Many other tools read the same file, including Cursor and GitHub Copilot's coding agent. See [agents.md](https://agents.md/).
+
+Using Claude Code too? Put `@AGENTS.md` in your `CLAUDE.md`. Both tools then read the same rules.
+
+---
+
 ## Windsurf
 
 Copy the contents of `windsurf-rules.md` into a file called `.windsurfrules` at the root of your project.
@@ -61,6 +71,7 @@ To apply these rules to every project you open, install them globally:
 |------|----------------|
 | Cursor | `~/.cursor/rules/ai-coding-rules.mdc` |
 | Claude Code | Append to `~/.claude/CLAUDE.md` |
+| Codex | Append to `~/.codex/AGENTS.md` |
 | Replit | No global option -- install per project |
 | Windsurf | Paste into Settings > Rules for AI |
 | Copilot | No global option -- install per project |

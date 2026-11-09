@@ -2,9 +2,9 @@
 
 **12 rules that prevent AI coding disasters. Derived from 500+ hours of real production work.**
 
-Works with Cursor, Claude Code, Replit, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files.
+Works with Cursor, Claude Code, Codex, Replit, Windsurf, GitHub Copilot, and any AI coding assistant that reads instruction files, including the many tools that read `AGENTS.md`.
 
-**AI agents default to building.** These rules make them stop, think, and verify. Commit before changing. Read before writing. Verify before claiming "done." And at the center: the spec is the single source of truth -- changes flow through the spec before they flow into code. The spec-driven approach is the philosophy. The other eleven rules are the scaffolding that makes it work. See the [full guide](guides/spec-driven.md).
+**AI agents default to building.** These rules make them stop, think, and verify. Commit before changing. Read before writing. Verify before claiming "done." And at the center: the spec is the single source of truth -- changes flow through the spec before they flow into code. The spec-driven approach is the philosophy. The other eleven rules are the scaffolding that makes it work. See the [full guide](guides/spec-driven.md). For how the rules, the spec and your checks fit together into one working setup, see [Harness Engineering](guides/harness-engineering.md).
 
 ---
 
@@ -27,6 +27,9 @@ curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/mai
 
 # Claude Code
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/claude-code-rules.md -o CLAUDE.md
+
+# Codex (and other tools that read AGENTS.md)
+curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/AGENTS.md -o AGENTS.md
 
 # Replit
 curl -fsSL https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main/quickstart/replit-rules.md -o replit.md
@@ -117,6 +120,7 @@ AI coding tools read instruction files at the start of every conversation. The i
 | Cursor (new) | `.cursor/rules/*.mdc` | `~/.cursor/rules/*.mdc` |
 | Cursor (legacy) | `.cursorrules` | Settings > Rules for AI |
 | Claude Code | `CLAUDE.md` | `~/.claude/CLAUDE.md` |
+| Codex | `AGENTS.md` | `~/.codex/AGENTS.md` |
 | Replit | `replit.md` | -- |
 | Windsurf | `.windsurfrules` | Settings > Rules for AI |
 | GitHub Copilot | `.github/copilot-instructions.md` | -- |
@@ -124,6 +128,8 @@ AI coding tools read instruction files at the start of every conversation. The i
 **Project rules** apply to one project. **Global rules** apply to every project you open with that tool. Install globally so the rules follow you everywhere. Install per-project to version-control them with your team.
 
 The rules are the same across all formats. Only the file location and metadata differ.
+
+`AGENTS.md` is an open format read by many tools besides Codex, including Cursor, GitHub Copilot's coding agent and Zed. Gemini CLI and Aider read it with a one-line setting. See [agents.md](https://agents.md/) for the current list. Codex reads the global file first, then every `AGENTS.md` from the repo root down to your working directory. An `AGENTS.override.md` in the same place takes precedence. Claude Code reads `CLAUDE.md`; recent versions fall back to `AGENTS.md` only when no `CLAUDE.md` exists. If your repo uses both, put `@AGENTS.md` in `CLAUDE.md` so both tools read one set of rules.
 
 For Cursor specifically: the `.mdc` format includes `alwaysApply: true` in the frontmatter, which means the rules are active in every session. Without this flag, rules may silently not apply.
 
@@ -162,12 +168,14 @@ ai-coding-rules/
   guides/
     spec-driven.md          Spec-driven development methodology
     goal-loops.md           Running agents in a loop until the work is done (/goal, ceilings, scheduled PRs)
+    harness-engineering.md  Rules, specs, skills and checks that turn an agent into useful work
 
   quickstart/               Copy one file and go
     QUICKSTART.md           Setup instructions per tool
     cursor-rules.mdc        Cursor (new format)
     cursorrules.txt         Cursor (legacy format)
     claude-code-rules.md    Claude Code
+    AGENTS.md               Codex and other AGENTS.md-reading tools
     replit-rules.md         Replit
     windsurf-rules.md       Windsurf
     copilot-instructions.md GitHub Copilot

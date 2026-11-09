@@ -8,7 +8,11 @@
 
 set -e
 
-REPO_BASE="https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main"
+# Override the download base for testing, e.g. AI_CODING_RULES_BASE=file://$PWD
+REPO_BASE="${AI_CODING_RULES_BASE:-https://raw.githubusercontent.com/chickensintrees/ai-coding-rules/main}"
+
+# Codex reads its global AGENTS.md from CODEX_HOME (default ~/.codex)
+CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
 
 GLOBAL=0
 if [ "${1}" = "--global" ]; then
@@ -56,9 +60,32 @@ if [ $GLOBAL -eq 1 ]; then
         installed=1
     fi
 
+    # Codex (global AGENTS.md in CODEX_HOME)
+    if command -v codex &>/dev/null || [ -d "$CODEX_DIR" ]; then
+        mkdir -p "$CODEX_DIR"
+        if [ -f "$CODEX_DIR/AGENTS.md" ]; then
+            if grep -q "AI Coding Rules" "$CODEX_DIR/AGENTS.md" 2>/dev/null; then
+                echo "  Codex:       Already in $CODEX_DIR/AGENTS.md (skipped)"
+            else
+                echo "" >> "$CODEX_DIR/AGENTS.md"
+                echo "# --- AI Coding Rules (auto-installed) ---" >> "$CODEX_DIR/AGENTS.md"
+                echo "" >> "$CODEX_DIR/AGENTS.md"
+                curl -fsSL "$REPO_BASE/quickstart/AGENTS.md" >> "$CODEX_DIR/AGENTS.md"
+                echo "  Codex:       Appended to $CODEX_DIR/AGENTS.md (global)"
+            fi
+        else
+            curl -fsSL "$REPO_BASE/quickstart/AGENTS.md" -o "$CODEX_DIR/AGENTS.md"
+            echo "  Codex:       $CODEX_DIR/AGENTS.md (global)"
+        fi
+        if [ -f "$CODEX_DIR/AGENTS.override.md" ]; then
+            echo "  Codex:       Note: $CODEX_DIR/AGENTS.override.md exists and takes precedence over AGENTS.md"
+        fi
+        installed=1
+    fi
+
     if [ $installed -eq 0 ]; then
         echo "  No AI coding tool detected globally."
-        echo "  Supported: Cursor (~/.cursor), Claude Code (~/.claude)"
+        echo "  Supported: Cursor (~/.cursor), Claude Code (~/.claude), Codex (~/.codex)"
         echo ""
         echo "  For project-level install, run without --global from your project root."
     fi
@@ -89,6 +116,25 @@ else
         else
             curl -fsSL "$REPO_BASE/quickstart/claude-code-rules.md" -o CLAUDE.md
             echo "  Claude Code: CLAUDE.md"
+        fi
+        installed=1
+    fi
+
+    # Codex and other AGENTS.md-reading tools
+    if command -v codex &>/dev/null || [ -d "$CODEX_DIR" ] || [ -f "AGENTS.md" ]; then
+        if [ -f "AGENTS.md" ]; then
+            if grep -q "AI Coding Rules" "AGENTS.md" 2>/dev/null; then
+                echo "  AGENTS.md:   Already in AGENTS.md (skipped)"
+            else
+                echo "" >> AGENTS.md
+                echo "# --- AI Coding Rules (auto-installed) ---" >> AGENTS.md
+                echo "" >> AGENTS.md
+                curl -fsSL "$REPO_BASE/quickstart/AGENTS.md" >> AGENTS.md
+                echo "  AGENTS.md:   Appended to existing AGENTS.md"
+            fi
+        else
+            curl -fsSL "$REPO_BASE/quickstart/AGENTS.md" -o AGENTS.md
+            echo "  AGENTS.md:   AGENTS.md (Codex and other AGENTS.md-reading tools)"
         fi
         installed=1
     fi
